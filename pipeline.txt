@@ -1,0 +1,17 @@
+1) fastp https://academic.oup.com/bioinformatics/article/34/17/i884/5093234
+
+conda install -c bioconda fastp
+
+fastp -i alg_S68_L001_R1_001.fastq -I alg_S68_L001_R2_001.fastq -o s68.trimmed.1.fq -O s68.trimmed.2.fq
+
+
+2) GenomeScope
+
+3) SGA (preQC)
+sga preprocess --pe-mode 1 s68.trimmed.1.fq s68.trimmed.2.fq > s68.fq
+sga index -a ropebwt --no-reverse -t 8 s68.fq
+sga preqc -t 8 s68.fq > s68.preqc
+
+4) Blobtools2 https://github.com/blobtoolkit/blobtools2
+https://blobtoolkit.genomehubs.org/2019/02/11/getting-started-with-blobtools2/
+
